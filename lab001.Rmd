@@ -1,0 +1,68 @@
+---
+title: "lab001rmd"
+output: html_document
+date: "2023-09-29"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+---
+title: "lab01 markdown"
+output: html_document
+date: "2023-09-29"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r visitors}
+#Question 1
+visitors %>% count(region)
+
+visitors %>% count(admission, setting)
+```
+
+```{r visitors}
+#Question 2
+class(visitors$n_2022)
+visitors %>% summarise_all(class)
+```
+
+```{r visitors}
+#Question 3
+visitors %>% arrange(desc(n_2022))
+visitors %>% arrange(desc(n_2021), n=10)
+```
+
+```{r visitors}
+#Question 4
+filter(visitors, n_2022 == 565772)
+count(visitors, n_2022 > 1000000)
+```
+
+``` {r visitors}
+#Question 5
+visitors %>% filter(
+  setting == "O",
+  admission == "Members",
+  region == "Yorkshire and the Humber",
+  n_2022 > 100000
+) %>% count()
+
+visitors %>% filter (
+  n_2022 > 50000,
+  n_2022 < 100000
+) %>%
+  count()
+
+visitors %>% count(
+  region) %>% 
+  filter (
+    n > 50
+) %>% count()
+
+```
+
